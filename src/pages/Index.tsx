@@ -7,19 +7,19 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 to-accent/10 flex flex-col items-center justify-center p-8">
       <div className="text-center space-y-8 max-w-2xl">
-        {/* Logo/Image placeholder */}
-        <div className="w-32 h-32 mx-auto bg-primary/10 rounded-lg flex items-center justify-center border-2 border-primary/20">
-          <span className="text-4xl font-bold text-primary">R</span>
+        {/* Renault Logo */}
+        <div className="w-32 h-32 mx-auto bg-primary rounded-lg flex items-center justify-center shadow-lg">
+          <span className="text-4xl font-bold text-primary-foreground">R</span>
         </div>
         
         {/* Title */}
         <div className="space-y-4">
-          <h1 className="text-5xl font-bold text-foreground">
-            TOOL SHED MANAGER
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Département Sous Ensemble - Renault
-          </p>
+        <h1 className="text-5xl font-bold text-foreground">
+          SYSTÈME DE GESTION D'OUTILS
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          Département Sous Ensemble - Renault
+        </p>
         </div>
 
         {/* Menu Button */}

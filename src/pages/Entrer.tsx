@@ -61,13 +61,22 @@ const Entrer = () => {
     // Simulate stock update
     const newQuantity = toolInfo.quantite + parseInt(quantite);
     
+    // Generate QR code and print
+    generateQRLabel();
+    
     toast({
       title: "Entrée enregistrée",
       description: `+${quantite} ${toolInfo.designation}. Nouveau stock: ${newQuantity}`,
     });
 
-    // Generate QR code (mock)
-    generateQRLabel();
+    // TODO: Save to Excel database when implemented
+    console.log("Saving to database:", {
+      mabic: toolInfo.mabic,
+      operation: 'ENTREE',
+      quantity: parseInt(quantite),
+      newStock: newQuantity,
+      timestamp: new Date().toISOString()
+    });
     
     // Reset form
     setMabic("");
@@ -78,7 +87,7 @@ const Entrer = () => {
   const generateQRLabel = () => {
     if (!toolInfo || !quantite) return;
 
-    // Mock QR generation
+    // Zebra ZT411 Print Data
     const qrData = {
       mabic: toolInfo.mabic,
       reference: toolInfo.reference,
@@ -87,11 +96,21 @@ const Entrer = () => {
       operation: 'ENTREE'
     };
 
+    // Mock Zebra ZT411 printer command
+    const zebraCommand = `
+^XA
+^FO50,50^A0N,50,50^FDQuantite: ${qrData.quantite}^FS
+^FO50,120^A0N,40,40^FDMABIC: ${qrData.mabic}^FS
+^FO50,180^A0N,40,40^FDRef: ${qrData.reference}^FS
+^FO50,240^BQN,2,8^FDMM,A${JSON.stringify(qrData)}^FS
+^XZ`;
+
     toast({
-      title: "Étiquette QR générée",
-      description: "Impression en cours...",
+      title: "Impression Zebra ZT411",
+      description: `Étiquette imprimée - MABIC: ${qrData.mabic}, Qté: ${qrData.quantite}`,
     });
 
+    console.log("Zebra ZT411 Command:", zebraCommand);
     console.log("QR Data:", qrData);
   };
 
@@ -136,7 +155,7 @@ const Entrer = () => {
                 size="lg"
                 className="text-xl px-8 h-14"
               >
-                VÉRIFIER
+                CONFIRMER
               </Button>
             </div>
 

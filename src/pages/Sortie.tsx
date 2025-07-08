@@ -72,13 +72,22 @@ const Sortie = () => {
     // Simulate stock update
     const newQuantity = toolInfo.quantite - requestedQty;
     
+    // Generate QR code and print
+    generateQRLabel();
+    
     toast({
       title: "Sortie enregistrée",
       description: `-${quantite} ${toolInfo.designation}. Nouveau stock: ${newQuantity}`,
     });
 
-    // Generate QR code (mock)
-    generateQRLabel();
+    // TODO: Save to Excel database when implemented
+    console.log("Saving to database:", {
+      mabic: toolInfo.mabic,
+      operation: 'SORTIE',
+      quantity: parseInt(quantite),
+      newStock: newQuantity,
+      timestamp: new Date().toISOString()
+    });
     
     // Reset form
     setMabic("");
