@@ -13,18 +13,33 @@ const Sortie = () => {
   const [quantite, setQuantite] = useState("");
   const [toolInfo, setToolInfo] = useState<any>(null);
 
-  // Mock database
+  // Mock database (structure matching Excel database)
   const mockDatabase = [
     {
-      mabic: "MAB001",
-      reference: "REF-2024-001",
-      designation: "Clé dynamométrique 50-250 Nm",
-      quantite: 15
+      mabic: "RM0348958",
+      reference: "0000006016",
+      designation: "BOULON FUSEAU LARA 600MNM LG 450M POUR IMPRIMANTE",
+      fabricant: "INTERMEC",
+      criticite: "",
+      prix: "",
+      quantite: 25
     },
     {
-      mabic: "MAB002", 
-      reference: "REF-2024-002",
-      designation: "Tournevis électrique 18V",
+      mabic: "RM0353623",
+      reference: "1-000043-500",
+      designation: "TETE D'IMPRESSION THERMIQUE 600DPI300MM",
+      fabricant: "INTERMEC", 
+      criticite: "",
+      prix: "",
+      quantite: 12
+    },
+    {
+      mabic: "RM0634180",
+      reference: "1-206301-50",
+      designation: "COMMANCHE PPINTERMEC PF41-3036FI",
+      fabricant: "INTERMEC",
+      criticite: "",
+      prix: "",
       quantite: 8
     }
   ];
